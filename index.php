@@ -18,6 +18,23 @@ $chartWidth = '600px';
 $chartHeight = '300px';
 
 $chart = new Chart($element, $data, $xkey, $ykey, $label, $chartWidth, $chartHeight);
+ 
+ $element = 'testdiv';
+ $data = array(
+ 	array('year' => '2008', 'view' => 30),
+ 	array('year' => '2009', 'view' => 10),
+ 	array('year' => '2010', 'view' => 5),
+ 	array('year' => '2011', 'view' => 15),
+ 	array('year' => '2012', 'view' => 40),
+ 	array('year' => '2013', 'view' => 10),
+ 	);
+ $xkey = 'year';
+ $ykey = 'view';
+ $label = 'View';
+ $chartWidth = '500px';
+ $chartHeight = '300px';
+
+ $nextchart = new Chart($element, $data, $xkey, $ykey, $label, $chartWidth, $chartHeight);
  ?>
 
 <!doctype html>
@@ -37,6 +54,7 @@ $chart = new Chart($element, $data, $xkey, $ykey, $label, $chartWidth, $chartHei
 			<div id="myfirstchart" style="height: 250px;">
 			</div>	
 			<?php echo $chart->render(); ?>
+			<?php echo $nextchart->render(); ?>
 		</div>
 	</div>
 	
