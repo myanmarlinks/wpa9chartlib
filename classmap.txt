@@ -1,0 +1,39 @@
+
+$element = div id
+$data > chart type
+$xkey > Line, Bar, Area
+..
+...
+..
+..
+..
+
+$element
+$data chagable 
+class Chart {
+	protected $element = '';
+	protected $data = array();
+	protected $type = '';
+	protected $width = '';
+	protected $heignt = '';
+
+	public function render(){
+
+	}
+}
+
+class BarLineArea extends Chart {
+	protected $xkey = '';
+	protected $ykeys = array();
+	protected $labels = array();
+
+	public function render() {
+
+	}
+}
+
+class Donut extends Chart {
+	public function render() {
+
+	}
+}
