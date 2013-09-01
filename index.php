@@ -24,14 +24,14 @@ $chart = new Chart(
 		);
 
 $element = 'donut';
-$data = array(
+$dodata = array(
 	array('label' => 'eat', 'value' => 5),
 	array('label' => 'sleep', 'value' => 8),
 	array('label' => 'run', 'value' => 1)
 	);
 
 $donut = new Chart(
-	$element, $data
+	$element, $dodata
 	);
  ?>
 

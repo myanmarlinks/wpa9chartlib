@@ -31,17 +31,19 @@ class Chart {
 		$jykeys = json_encode($this->ykeys);
 		$jlabels = json_encode($this->labels);
 
-		if($type == 0) {
-			$charttype = $this->type;
-		} elseif ($type == 1) {
-			$charttype = 'Line';
-		} elseif ($type == 2) {
-			$charttype = 'Bar';
-		} elseif ($type == 3) {
-			$charttype = 'Area';
-		} elseif ($type == 4) {
-			$charttype = 'Donut';
+		switch ($type) {
+			case 1:
+				$charttype = 'Line'; break;
+			case 2:
+				$charttype = 'Bar'; break;
+			case 3:
+				$charttype = 'Area'; break;
+			case 4:
+				$charttype = 'Donut'; break;
+			default: 
+				$charttype = $this->type; break;
 		}
+		
 		if($type == 4) {
 			$chart = <<<EOF
 			<div id="$this->element-$type" style="height: $this->chartHeight; width: $this->chartWidth">
