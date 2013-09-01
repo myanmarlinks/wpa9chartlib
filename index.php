@@ -1,43 +1,41 @@
 <?php 
-require_once __DIR__ . '/Lib/ChartMaker.php';
+
+require_once __DIR__ . "/Lib/ChartMaker.php";
 
 use ChartMaker\Chart;
-$element = 'mydiv';
+$element = 'chart';
 $data = array(
-		array('date' => '2013-08-12', 'view' => 11),
-		array('date' => '2013-08-13', 'view' => 7),
-		array('date' => '2013-08-14', 'view' => 21),
-		array('date' => '2013-08-15', 'view' => 34),
-		array('date' => '2013-08-16', 'view' => 18),
-		array('date' => '2013-08-17', 'view' => 9),
+	array('y' => '2006', 'a' => 100, "b" => 70 ),
+	array('y' => '2007', 'a' => 76, "b" => 60 ),
+	array('y' => '2008', 'a' => 34, "b" => 50 ),
+	array('y' => '2009', 'a' => 50, "b" => 40 ),
+	array('y' => '2010', 'a' => 23, "b" => 30 ),
+	array('y' => '2011', 'a' => 1, "b" => 20 ),
+	array('y' => '2012', 'a' => 5, "b" => 10 ),
 	);
-$xkey = "date";
-$ykey = "view";
-$label = "View";
+$xkey = 'y';
+$ykeys = array('a', 'b');
+$labels = array('A', 'B');
 $chartWidth = '600px';
 $chartHeight = '300px';
+$chart = new Chart(
+		$element, $data, $xkey, 
+		$ykeys, $labels, $chartWidth, $chartHeight
+		);
 
-$chart = new Chart($element, $data, $xkey, $ykey, $label, $chartWidth, $chartHeight);
- 
- $element = 'testdiv';
- $data = array(
- 	array('year' => '2008', 'view' => 30),
- 	array('year' => '2009', 'view' => 10),
- 	array('year' => '2010', 'view' => 5),
- 	array('year' => '2011', 'view' => 15),
- 	array('year' => '2012', 'view' => 40),
- 	array('year' => '2013', 'view' => 10),
- 	);
- $xkey = 'year';
- $ykey = 'view';
- $label = 'View';
- $chartWidth = '500px';
- $chartHeight = '300px';
+$element = 'donut';
+$data = array(
+	array('label' => 'eat', 'value' => 5),
+	array('label' => 'sleep', 'value' => 8),
+	array('label' => 'run', 'value' => 1)
+	);
 
- $nextchart = new Chart($element, $data, $xkey, $ykey, $label, $chartWidth, $chartHeight);
+$donut = new Chart(
+	$element, $data
+	);
  ?>
 
-<!doctype html>
+ <!doctype html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -50,32 +48,13 @@ $chart = new Chart($element, $data, $xkey, $ykey, $label, $chartWidth, $chartHei
 </head>
 <body>
 	<div class="row">
-		<div class="col-md-12">
-			<div id="myfirstchart" style="height: 250px;">
-			</div>	
+		<div class="col-md-12">	
 			<?php echo $chart->render(); ?>
-			<?php echo $nextchart->render(); ?>
+			<?php echo $chart->render(1); ?>
+			<?php echo $chart->render(2); ?>
+			<?php echo $chart->render(3); ?>
+			<?php echo $donut->render(4); ?>
 		</div>
 	</div>
-	
-	<!-- 
-	div#container>div#header+div#content+div#footer
-	ul#nav>li*6>a	
-	-->
-	<script>
-		new Morris.Line({
-  			element: 'myfirstchart',
-			  data: [
-    				{ year: '2008', value: 20 },
-    				{ year: '2009', value: 10 },
-    				{ year: '2010', value: 5 },
-				    { year: '2011', value: 5 },
-    				{ year: '2012', value: 20 }
-  				],
-			xkey: 'year',
-  			ykeys: ['value'],
-			labels: ['Value']
-		});
-	</script>
 </body>
 </html>
